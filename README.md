@@ -1,7 +1,7 @@
 apache-php
 ===================================
 
-A Docker image based on Ubuntu, serving PHP running as Apache Module. Useful for Web developers in need for a fixed PHP version.
+A Docker image based on Ubuntu, serving PHP running as Apache Module. 
 
 Tags
 -----
