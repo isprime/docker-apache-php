@@ -1,4 +1,6 @@
 FROM ubuntu:14.04
+#FROM ubuntu:12.04 change this if you need 5.3, by default it goes to 5.5
+
 MAINTAINER Mauro Delazeri <mauro.delazeri@isprime.com>
 
 VOLUME ["/var/www"]
