@@ -30,6 +30,11 @@ docker run -d -p 8080:80 -p 2022:22 -v /www/webroot:/var/www --name=XXXXX -e SER
 * `-e SERVER_PASSWORD=[secret]` sets the user passwords for both `root` and the unprivileged `ubuntu` user
 * `-e SERVER_KEY=[ssh-key-string]` sets the SSH key for the `ubuntu` user to log in passwordless via ssh
 
+### Reload apache inside of the container
+
+```
+apache2ctl -k graceful
+```
 
 Installed packages
 -------------------
