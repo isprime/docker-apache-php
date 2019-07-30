@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:12.04
 #FROM ubuntu:12.04 change this if you need 5.3, by default it goes to 5.5
 
 MAINTAINER Mauro Delazeri <mauro.delazeri@isprime.com>
@@ -18,7 +18,7 @@ RUN mkdir -p /home/ubuntu/.ssh
 RUN chmod 700 /home/ubuntu/.ssh
 RUN chown ubuntu:ubuntu /home/ubuntu/.ssh
 
-ADD apache_default /etc/apache2/sites-available/000-default.conf
+ADD apache_default /etc/apache2/sites-enabled/000-default
 RUN a2enmod rewrite
 RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/apache2/php.ini
 RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/cli/php.ini
