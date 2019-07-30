@@ -19,9 +19,9 @@ docker run -d -P isprimemauro/apache-php:5.3.10
 A bit more specific:
 
 ```
-docker run -d -p 8080:80 -p 2022:22 -v /www/webroot:/var/www -e SERVER_PASSWORD=ubuntu isprimemauro/apache-php:5.3.10
+docker run -d -p 8080:80 -p 2022:22 -v /www/webroot:/var/www --name=XXXXX -e SERVER_PASSWORD=ubuntu isprimemauro/apache-php:5.3.10
 
-docker run -d -p 8080:80 -p 2022:22 -v /www/webroot:/var/www -e SERVER_PASSWORD=ubuntu isprimemauro/apache-php:5.5.9
+docker run -d -p 8080:80 -p 2022:22 -v /www/webroot:/var/www --name=XXXXX -e SERVER_PASSWORD=ubuntu isprimemauro/apache-php:5.5.9
 ```
 
 * `-v [local path]:/var/www` maps the container's webroot to a local path
