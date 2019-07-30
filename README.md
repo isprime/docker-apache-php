@@ -9,6 +9,22 @@ Tags
 * 5.3.10: Ubuntu 12.04 (LTS), Apache 2.2, PHP 5.3.10
 * 5.5.9: Ubuntu 14.04 (LTS), Apache 2.4, PHP 5.5.9
 
+Build
+------
+```
+docker build -t 5.3 .
+
+# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+5.3                 latest              69aaa5df3e01        6 seconds ago       237MB
+ubuntu              12.04               5b117edd0b76        2 years ago         104MB
+
+docker tag 69aaa5df3e01 isprimemauro/apache-php:5.3.10
+
+docker push isprimemauro/apache-php:5.3.10
+
+```
+
 Usage
 ------
 
