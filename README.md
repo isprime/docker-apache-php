@@ -9,6 +9,22 @@ Tags
 * 5.3.10: Ubuntu 12.04 (LTS), Apache 2.2, PHP 5.3.10
 * 5.5.9: Ubuntu 14.04 (LTS), Apache 2.4, PHP 5.5.9
 
+Build
+------
+```
+docker build -t 5.3 .
+
+# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+5.3                 latest              69aaa5df3e01        6 seconds ago       237MB
+ubuntu              12.04               5b117edd0b76        2 years ago         104MB
+
+docker tag 69aaa5df3e01 isprimemauro/apache-php:5.3.10
+
+docker push isprimemauro/apache-php:5.3.10
+
+```
+
 Usage
 ------
 
@@ -30,6 +46,11 @@ docker run -d -p 8080:80 -p 2022:22 -v /www/webroot:/var/www --name=XXXXX -e SER
 * `-e SERVER_PASSWORD=[secret]` sets the user passwords for both `root` and the unprivileged `ubuntu` user
 * `-e SERVER_KEY=[ssh-key-string]` sets the SSH key for the `ubuntu` user to log in passwordless via ssh
 
+### Reload apache inside of the container
+
+```
+apache2ctl -k graceful
+```
 
 Installed packages
 -------------------
