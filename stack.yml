@@ -1,0 +1,38 @@
+version: "3"
+services:
+  pornreviews.pinkworld.com:
+    image: apache-php:5.3.10
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - /www/pornreviews.pinkworld.com:/var/www
+      - /var/log/docker/apache2/pornreviews.pinkworld.com-access_log:/var/log/apache2/access.log
+      - /var/log/docker/apache2/pornreviews.pinkworld.com-error_log:/var/log/apache2/access.log
+  reviews.pinkworld.com:
+    image: apache-php:5.3.10
+    restart: always
+    ports:
+      - 8081:80
+    volumes:
+      - /www/reviews.pinkworld.com:/var/www
+      - /var/log/docker/apache2/reviews.pinkworld.com-access_log:/var/log/apache2/access.log
+      - /var/log/docker/apache2/reviews.pinkworld.com-error_log:/var/log/apache2/access.log
+  pinkworld.com:
+    image: apache-php:5.3.10
+    restart: always
+    ports:
+      - 8083:80
+    volumes:
+      - /www/pinkworld.com:/var/www
+      - /var/log/docker/apache2/pinkworld.com-access_log:/var/log/apache2/access.log
+      - /var/log/docker/apache2/pinkworld.com-error_log:/var/log/apache2/access.log
+  partybuscharleston.com:
+    image: apache-php:5.3.10       
+    restart: always
+    ports:
+      - 8082:80
+    volumes:
+      - /www/partybuscharleston.com:/var/www
+      - /var/log/docker/apache2/partybuscharleston.com-access_log:/var/log/apache2/access.log
+      - /var/log/docker/apache2/partybuscharleston.com-error_log:/var/log/apache2/access.log        

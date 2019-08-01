@@ -9,17 +9,11 @@ VOLUME ["/var/www"]
 RUN apt-get update
 RUN apt-get upgrade -y
 
-RUN apt-get install -y openssh-server apache2 supervisor php5 php5-cli libapache2-mod-php5 php5-gd php5-json php5-ldap php5-mysql php5-pgsql postfix vim nano
-RUN mkdir -p /var/run/sshd
+RUN apt-get install -y apache2 supervisor php5 php5-cli libapache2-mod-php5 php5-gd php5-json php5-ldap php5-mysql php5-pgsql vim nano
 RUN mkdir -p /www
 RUN mkdir -p /var/log/supervisor
 
 RUN useradd ubuntu -d /home/ubuntu
-RUN groupadd -g 5001 cosis
-RUN useradd -u 5001 -g 5001 -m -s /bin/bash cosis
-RUN mkdir -p /home/ubuntu/.ssh
-RUN chmod 700 /home/ubuntu/.ssh
-RUN chown ubuntu:ubuntu /home/ubuntu/.ssh
 
 ADD apache_default /etc/apache2/sites-enabled/000-default
 RUN a2enmod rewrite
@@ -27,7 +21,6 @@ RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/apache
 RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /etc/php5/cli/php.ini
 RUN sed -ri 's/^error_reporting\s*=.*$/error_reporting = E_ALL \& ~E_DEPRECATED \& ~E_NOTICE/g' /etc/php5/apache2/php.ini
 RUN sed -ri 's/^error_reporting\s*=.*$/error_reporting = E_ALL \& ~E_DEPRECATED \& ~E_NOTICE/g' /etc/php5/cli/php.ini
-RUN sed -ri 's/^PermitRootLogin.*$/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD run /usr/local/bin/
